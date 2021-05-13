@@ -4,7 +4,7 @@ export default class Parser
     {
     let splited = brut_txt.split(" ");
     let cmd = splited[0];
-    let args = splited[1];
+    let args = splited.slice(1).join(" ");
     var call = this[cmd](args);
     return call;
     }
