@@ -16,6 +16,12 @@ export default class Parser
     return call;
     }
 
+    help(args)
+    {
+        let text = "Message d'aide relatif aux commandes disponibles <br> -> echo <message> : Permet d'afficher le message \n";
+        return text;
+    }
+
     // an example of an available command
     echo(text)
     {
