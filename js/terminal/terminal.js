@@ -1,6 +1,7 @@
 import Parser from './parser/commands.js'
 let PARSER = new Parser();
 
+//allow easier execution of commands
 function execute(brut_txt)
 {
     let cmd_out = PARSER.cmd_parser(brut_txt);
