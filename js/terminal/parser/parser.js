@@ -3,6 +3,7 @@
     Each function will require an argument such as "text", and will need to parse them in order to achieve the command's needs
 
 */
+import {EchoCommand, ManCommand} from '../commands/commands.js'
 
 export default class Parser
 {
@@ -16,16 +17,22 @@ export default class Parser
     return call;
     }
 
-    help(args)
+    man(args)
     {
-        let text = "Message d'aide relatif aux commandes disponibles <br> -> echo <message> : Permet d'afficher le message \n";
-        return text;
+        const ManCmd = new ManCommand();
+        return ManCmd.man(args);
     }
 
     // an example of an available command
     echo(text)
     {
-        return text;
+        const EchoCmd = new EchoCommand();
+        return EchoCmd.echo(text)
+    }
+
+    reboot(args)
+    {
+        
     }
 
 

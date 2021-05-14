@@ -1,4 +1,4 @@
-import Parser from './parser/commands.js'
+import Parser from './parser/parser.js'
 let PARSER = new Parser();
 
 //allow easier execution of commands
