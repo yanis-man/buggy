@@ -11,7 +11,7 @@ class ManCommand
 {
     man(args)
     {
-        return MAN_DATA[0][args];
+        return MAN_DATA[args];
     }
 
 }
