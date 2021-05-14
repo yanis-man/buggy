@@ -15,4 +15,13 @@ class ManCommand
     }
 
 }
-export {EchoCommand, ManCommand}
+
+class RebootCommand
+{
+    reboot(args)
+    {
+        let text = "J'ai reboot batard"
+        return text
+    }
+}
+export {EchoCommand, ManCommand, RebootCommand}
