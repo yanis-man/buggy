@@ -1,6 +1,6 @@
 # buggy
-buggy aimes to be a fun little browser game to play when on the thumb, it'll not require a lot of time but will last a lot of time. 
-based on collecting bugs, player can attack an other player's compagny to resolve as much as bug as possible. 
+buggy aims to be a fun little browser game to play when on the thumb, it'll not require a lot of time but will last a lot of time. 
+Based on collecting bugs, player (as a CEO) can attack an other player's compagny to resolve as much as bug as possible. 
 
 Player can hire baddest developper to help him produces bugs. Also, recurrent events will allows CEO to make more bugs. 
 
