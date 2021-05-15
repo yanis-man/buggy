@@ -1,0 +1,1 @@
+//will be used to inialize data of a player

@@ -4,6 +4,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="js/terminal/terminal.js" type="module"></script>
         <script src="js/main.js" type="module"></script>
+        <script src="js/informations/refresh_data.js" type="module"></script>
     </head>
     <div class="col">
         <div class="row">
