@@ -1,9 +1,11 @@
-import {compagny} from './data_init.js'
-let deb = 0
+
 function refresh(document)
 {
-    deb += 1;
-    document.getElementById("bugs").innerHTML = deb;
+    let current_balance = document.compagny.balance
+    document.getElementById("bugs").innerHTML = Number(current_balance)+1;
+    console.log(document.compagny.balance)
+    saveData(document)
+    document.compagny.update_display(document)
 }
 function saveData(document)
 {
@@ -11,9 +13,9 @@ function saveData(document)
     let cd = document.getElementById('coeff-def').innerHTML
     let ca = document.getElementById('coeff-att').innerHTML
     let h = document.getElementById('hackers').innerHTML
-    let l = compagny.level
+    let l = document.compagny.level
     let d = document.getElementById('devs').innerHTML
-    let v = compagny.vault //document.getElementById('bugs').val()
+    let v = document.compagny.vault //document.getElementById('bugs').val()
     let dr = null
     if(document.getElementById("do-restart").classList.contains('green'))
     {
@@ -24,6 +26,6 @@ function saveData(document)
         dr = 0
     }
 
-    compagny.update(b,cd,ca,h,l,d,v,dr)
+    document.compagny.update(b,cd,ca,h,l,d,v,dr)
 }
 export {refresh, saveData};

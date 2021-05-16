@@ -1,5 +1,5 @@
-import * as Refresh from './informations/data_manager.js'
-import {initData} from './informations/data_init.js'
+import * as Refresh from './informations/DataManager.js'
+import {DataManager} from './informations/DataInit.js'
 import {ApiURL} from './CONFIG.js'
 
 
@@ -11,7 +11,10 @@ $(document).ready(function(){
     }
 
 
-    initData(document, "yaxitoo");
+    let dm = new DataManager(document, "yaxitoo")
+    dm.initData()
+    document.compagny = dm.return_compagny()
+
 
     addEventListener('beforeunload', function(event){
         Refresh.saveData(document)
