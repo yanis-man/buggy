@@ -31,6 +31,7 @@ class DataManager
     document.getElementById("hackers").innerHTML = this.compagny.hackers;
     document.getElementById("coeff-att").innerHTML = this.compagny.att_coeff;
     document.getElementById("coeff-def").innerHTML = this.compagny.def_coeff;
+    document.getElementById("bug-prod").innerHTML = this.compagny.reward;
     this.compagny.check_n_set_restart();
 
     }
