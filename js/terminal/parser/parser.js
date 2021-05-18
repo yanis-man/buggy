@@ -35,6 +35,11 @@ export default class Parser
         const RebootCmd = new Commands.RebootCommand();
         return RebootCmd.reboot(args);
     }
+    curl(args)
+    {
+        const HireCmd = new Commands.HireCommand();
+        return HireCmd.hire_devs(args)
+    }
 
 
 }

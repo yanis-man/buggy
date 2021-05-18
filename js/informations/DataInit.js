@@ -6,7 +6,7 @@ class DataManager
 {
     constructor(document, name)
     {
-        this.document = document;
+        document = document;
         this.player_name = name
         this.compagny = null
     }
@@ -15,7 +15,7 @@ class DataManager
     //player ignition
     let player = new Player(this.player_name);
     let PlayerData = player.PlayerInfos();
-    const prefixs = this.document.getElementsByClassName("prefix")
+    const prefixs = document.getElementsByClassName("prefix")
     //compagny ignition
     this.compagny = new Compagny(player.id)
 
@@ -26,12 +26,12 @@ class DataManager
 
 
     //Informations Tables ignitions
-    this.document.getElementById("bugs").innerHTML = this.compagny.balance;
-    this.document.getElementById("devs").innerHTML = this.compagny.devs;
-    this.document.getElementById("hackers").innerHTML = this.compagny.hackers;
-    this.document.getElementById("coeff-att").innerHTML = this.compagny.att_coeff;
-    this.document.getElementById("coeff-def").innerHTML = this.compagny.def_coeff;
-    this.compagny.check_n_set_restart(this.document);
+    document.getElementById("bugs").innerHTML = this.compagny.balance;
+    document.getElementById("devs").innerHTML = this.compagny.devs;
+    document.getElementById("hackers").innerHTML = this.compagny.hackers;
+    document.getElementById("coeff-att").innerHTML = this.compagny.att_coeff;
+    document.getElementById("coeff-def").innerHTML = this.compagny.def_coeff;
+    this.compagny.check_n_set_restart();
 
     }
     return_compagny()

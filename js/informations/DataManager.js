@@ -2,8 +2,7 @@
 function refresh(document)
 {
     let current_balance = document.compagny.balance
-    document.getElementById("bugs").innerHTML = Number(current_balance)+1;
-    console.log(document.compagny.balance)
+    document.getElementById('bugs').innerHTML = Number(current_balance) + document.compagny.reward;
     saveData(document)
     document.compagny.update_display(document)
 }
@@ -26,6 +25,6 @@ function saveData(document)
         dr = 0
     }
 
-    document.compagny.update(b,cd,ca,h,l,d,v,dr)
+    document.compagny.update(b,cd,ca,h,l,d,v,dr, document.compagny.reward)
 }
 export {refresh, saveData};

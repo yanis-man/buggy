@@ -24,4 +24,20 @@ class RebootCommand
         return text
     }
 }
-export {EchoCommand, ManCommand, RebootCommand}
+
+class HireCommand
+{
+    hire_devs(args)
+    {
+        let q = Number(args)
+        if(!document.compagny.hire_devs(q))
+        {
+            let text = "Recrutement impossible"
+            return text
+        }
+        let text = "Recrutement de: "+q+" devs";
+        return text
+    }
+}
+
+export {EchoCommand, ManCommand, RebootCommand, HireCommand}
