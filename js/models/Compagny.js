@@ -43,6 +43,7 @@ class Compagny
         document.getElementById('coeff-att').innerHTML = this.def_coeff
         document.getElementById('hackers').innerHTML = this.hackers
         document.getElementById('devs').innerHTML = this.devs
+        document.getElementById('bug-prod').innerHTML = this.reward
 
         this.check_n_set_restart();
 
@@ -62,7 +63,9 @@ class Compagny
     }
     hire_devs(quantity)
     {
-        let price = Math.floor(8*Math.sqrt(this.devs)+2)
+        let actual_devs = Number(this.devs)
+        let price = Math.ceil( (15*Math.sqrt((actual_devs+2)))*quantity )
+        console.log(price)
         if(!this.check_balance(price))
         {
             return false
@@ -84,7 +87,7 @@ class Compagny
     }
     compute_new_reward()
     {
-        let new_reward = Math.exp(this.devs*0.1)
+        let new_reward = (this.devs*0.5+2)
         this.reward = Math.floor(new_reward);
     }
     check_balance(cost)
