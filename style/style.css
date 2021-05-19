@@ -19,6 +19,7 @@ body
     background-color: var(--black_bg);
     width: var(--panel_width);
     height: var(--panel_height);
+    padding: 2px;
 
 }
 .infos-interface
@@ -26,6 +27,10 @@ body
     background-color: var(--black_bg);
     width: var(--panel_width);
     height: var(--panel_height);
+}
+.padding-0
+{
+    height: 10px;
 }
 .terminal
 {

@@ -40,4 +40,12 @@ class HireCommand
     }
 }
 
-export {EchoCommand, ManCommand, RebootCommand, HireCommand}
+class AptCommand
+{
+    apt(args)
+    {
+        return "ok"
+    }
+}
+
+export {EchoCommand, ManCommand, RebootCommand, HireCommand, AptCommand}

@@ -35,6 +35,7 @@ class Compagny
         this.devs = devs;
         this.vault = vault;
         this.do_restart = vault;
+        this.dev_price = this.compute_dev_price()
     }
     update_display()
     {
@@ -44,6 +45,7 @@ class Compagny
         document.getElementById('hackers').innerHTML = this.hackers
         document.getElementById('devs').innerHTML = this.devs
         document.getElementById('bug-prod').innerHTML = this.reward
+        document.getElementById('dev-price').innerHTML = this.compute_dev_price()
 
         this.check_n_set_restart();
 
@@ -89,6 +91,11 @@ class Compagny
     {
         let new_reward = (this.devs*0.5+2)
         this.reward = Math.floor(new_reward);
+    }
+    compute_dev_price()
+    {
+        let devs = Number(this.devs)
+        return Math.ceil( (15*Math.sqrt((devs+2))))
     }
     check_balance(cost)
     {

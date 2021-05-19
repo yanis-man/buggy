@@ -3,6 +3,7 @@
     Each function will require an argument such as "text", and will need to parse them in order to achieve the command's needs
 
 */
+import { ApiURL } from '../../CONFIG.js';
 import * as Commands from '../commands/commands.js'
 
 export default class Parser
@@ -35,10 +36,23 @@ export default class Parser
         const RebootCmd = new Commands.RebootCommand();
         return RebootCmd.reboot(args);
     }
-    curl(args)
+    hire(args)
     {
-        const HireCmd = new Commands.HireCommand();
-        return HireCmd.hire_devs(args)
+        let splitArgs = args.split(' ')
+        if(splitArgs[0] == 'dev' && splitArgs[1] > 0 )
+        {
+            const HireCmd = new Commands.HireCommand();
+            return HireCmd.hire_devs(splitArgs[1])
+        }
+        else
+        {
+            return "Y'a un soucis d'arguments"
+        }
+    }
+    apt(args)
+    {
+        const AptCmd = new Commands.AptCommand();
+        return AptCmd.apt(args);
     }
 
 

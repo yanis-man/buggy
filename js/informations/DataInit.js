@@ -32,6 +32,8 @@ class DataManager
     document.getElementById("coeff-att").innerHTML = this.compagny.att_coeff;
     document.getElementById("coeff-def").innerHTML = this.compagny.def_coeff;
     document.getElementById("bug-prod").innerHTML = this.compagny.reward;
+    document.getElementById("comp-name").innerHTML = this.compagny.name;
+    document.getElementById('dev-price').innerHTML = this.compagny.compute_dev_price()
     this.compagny.check_n_set_restart();
 
     }
