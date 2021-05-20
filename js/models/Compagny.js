@@ -20,6 +20,9 @@ class Compagny
         this.vault = info['comp_vault'];
         this.creation = info['comp_creation'];
         this.do_restart = Number(info['comp_do_restart']);
+        this.modifier = 1
+
+        this.compute_total_modifier()
 
     }
     update(balance, att_coeff, def_coeff, hackers, level, devs, vault, do_restart, reward)
@@ -39,6 +42,7 @@ class Compagny
     }
     update_display()
     {
+        this.compute_new_reward()
         document.getElementById('bugs').innerHTML = this.balance
         document.getElementById('coeff-def').innerHTML = this.att_coeff
         document.getElementById('coeff-att').innerHTML = this.def_coeff
@@ -46,6 +50,7 @@ class Compagny
         document.getElementById('devs').innerHTML = this.devs
         document.getElementById('bug-prod').innerHTML = this.reward
         document.getElementById('dev-price').innerHTML = this.compute_dev_price()
+        document.getElementById('total-modifier').innerHTML = this.modifier
 
         this.check_n_set_restart();
 
@@ -67,14 +72,12 @@ class Compagny
     {
         let actual_devs = Number(this.devs)
         let price = Math.ceil( (15*Math.sqrt((actual_devs+2)))*quantity )
-        console.log(price)
         if(!this.check_balance(price))
         {
             return false
         }
         else
         {
-            console.log("apres if")
         let actual_dev = this.devs;
         this.devs = Number(actual_dev) + Number(quantity);
         let actual_b = this.balance;
@@ -89,7 +92,7 @@ class Compagny
     }
     compute_new_reward()
     {
-        let new_reward = (this.devs*0.5+2)
+        let new_reward = (this.modifier*(this.devs*0.5+2))
         this.reward = Math.floor(new_reward);
     }
     compute_dev_price()
@@ -97,6 +100,25 @@ class Compagny
         let devs = Number(this.devs)
         return Math.ceil( (15*Math.sqrt((devs+2))))
     }
+    compute_total_modifier()
+    {
+        if(this.vault.length > 0)
+        {
+        let items=this.vault.split(",")
+        let actual_modifier = this.modifier
+        let final_modifier = null
+        items.forEach(function(item, index){
+            item = Number(item)
+            const params = "item_id="+item+"&action=getitem"
+            let item_modifier = getURL(ApiURL.COMP_URL, params)
+            console.log(item_modifier)
+            //item_modifier = Number(item_modifier)
+            //final_modifier = actual_modifier * item_modifier;
+        })
+        //this.modifier = final_modifier
+    }
+    }
+
     check_balance(cost)
     {
         if(this.balance - cost < 0)

@@ -26,15 +26,7 @@ class DataManager
 
 
     //Informations Tables ignitions
-    document.getElementById("bugs").innerHTML = this.compagny.balance;
-    document.getElementById("devs").innerHTML = this.compagny.devs;
-    document.getElementById("hackers").innerHTML = this.compagny.hackers;
-    document.getElementById("coeff-att").innerHTML = this.compagny.att_coeff;
-    document.getElementById("coeff-def").innerHTML = this.compagny.def_coeff;
-    document.getElementById("bug-prod").innerHTML = this.compagny.reward;
-    document.getElementById("comp-name").innerHTML = this.compagny.name;
-    document.getElementById('dev-price').innerHTML = this.compagny.compute_dev_price()
-    this.compagny.check_n_set_restart();
+    this.compagny.update_display()
 
     }
     return_compagny()

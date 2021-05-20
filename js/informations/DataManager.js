@@ -2,9 +2,10 @@
 function refresh(document)
 {
     let current_balance = document.compagny.balance
+    document.compagny.compute_new_reward()
     document.getElementById('bugs').innerHTML = Number(current_balance) + document.compagny.reward;
     saveData(document)
-    document.compagny.update_display(document)
+    document.compagny.update_display()
 }
 function saveData(document)
 {
