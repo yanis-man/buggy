@@ -17,13 +17,10 @@ class Compagny
         this.level = Number(info['comp_level']);
         this.devs = Number(info['comp_devs']);
         this.reward = Number(info['comp_reward'])
-        this.vault = info['comp_vault'];
+        this.modifier = parseFloat(info['comp_modifier']);
         this.creation = info['comp_creation'];
         this.do_restart = Number(info['comp_do_restart']);
-        this.modifier = 1
-
-        this.compute_total_modifier()
-
+        this.vault = info['comp_vault']
     }
     update(balance, att_coeff, def_coeff, hackers, level, devs, vault, do_restart, reward)
     {
@@ -39,6 +36,8 @@ class Compagny
         this.vault = vault;
         this.do_restart = vault;
         this.dev_price = this.compute_dev_price()
+
+        this.update_display()
     }
     update_display()
     {
@@ -100,23 +99,19 @@ class Compagny
         let devs = Number(this.devs)
         return Math.ceil( (15*Math.sqrt((devs+2))))
     }
-    compute_total_modifier()
+    update_modifier(item_id)
     {
-        if(this.vault.length > 0)
+        let r = getURL(ApiURL.COMP_URL, "item_id="+ item_id +"&action=getitem")['result'][0]
+        this.modifier = parseFloat(r['item_modifier']) * this.modifier
+
+        let new_vault = getURL(ApiURL.COMP_URL, "new_item="+item_id+"&comp_id="+this.id+"&new_modifier="+this.modifier+"&action=updatevault");
+        if(new_vault['result'] == 'already')
         {
-        let items=this.vault.split(",")
-        let actual_modifier = this.modifier
-        let final_modifier = null
-        items.forEach(function(item, index){
-            item = Number(item)
-            const params = "item_id="+item+"&action=getitem"
-            let item_modifier = getURL(ApiURL.COMP_URL, params)
-            console.log(item_modifier)
-            //item_modifier = Number(item_modifier)
-            //final_modifier = actual_modifier * item_modifier;
-        })
-        //this.modifier = final_modifier
-    }
+            this.vault = new_vault['vault']
+            return false
+        }
+        this.vault = new_vault['result']
+        return true
     }
 
     check_balance(cost)
@@ -129,6 +124,12 @@ class Compagny
         {
             return true
         }
+    }
+
+    display_items()
+    {
+        let items_list = getURL(ApiURL.COMP_URL, 'action=getitem')['result']
+        return items_list
     }
 }
 

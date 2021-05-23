@@ -35,7 +35,9 @@ body
 .terminal
 {
     background-color: var(--black_bg);
-    width: 100%;
+    padding-top: 5px;
+    padding-left:5px;
+    width: 99%;
     height: 50%;
 }
 .info-table
