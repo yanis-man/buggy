@@ -44,7 +44,32 @@ class AptCommand
 {
     apt(args)
     {
-        return "ok"
+        let splited_args = args.split(' ');
+        if(splited_args[0] == "list")
+        {
+            let item_list = document.compagny.display_items()
+            let final_str = ""
+            for(let i = 0; i<item_list.length;i++)
+            {
+                final_str += item_list[i]['id']+ "| "+item_list[i]['item_name']+ " / x"+item_list[i]['item_modifier']+"\n"
+            }
+            return final_str
+        }
+        if(splited_args[0] == "install" && (splited_args[1] != " "))
+        {
+            if(document.compagny.update_modifier(Number(splited_args[1])))
+            {
+                return "Everything is ok"
+            }
+            else
+            {
+                return "Petit filou, tu l'as déjà"
+            }
+        }
+        else
+        {
+            return "Défauts d'argument"
+        }
     }
 }
 
